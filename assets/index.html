@@ -5,27 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="../assets/js/index.js" defer></script>
+    <link rel="stylesheet" href="../assets/css/index.css">
     <title>Desafio de Criptografia</title>
 </head>
 <body>
     <h1>Boas-vindas ao primeiro desafio!</h1>
-    <p>Durante estas duas semanas, vamos trabalhar em uma aplicação que criptografa textos, assim você poderá trocar mensagens secretas com outras pessoas que saibam o segredo da criptografia utilizada.</p>
+    <p>Durante estas duas semanas, vamos trabalhar em uma aplicação que criptografa textos...</p>
     
-    <label for="inputText">Insira o texto:</label>
-    <textarea id="inputText" rows="4" cols="50"></textarea>
+    <!-- Área para criptografar -->
+    <label for="inputTextEncrypt">Insira o texto para criptografar:</label>
+    <textarea id="inputTextEncrypt" rows="4" cols="50"></textarea>
 
-    <label for="encryptOrDecrypt">Escolha a operação:</label>
-    <select id="encryptOrDecrypt">
-        <option value="encrypt">Criptografar</option>
-        <option value="decrypt">Descriptografar</option>
-    </select>
+    <button id="encryptButton">Criptografar</button>
 
-    <button onclick="processText()">Processar</button>
+    <label for="outputTextEncrypt">Resultado da criptografia:</label>
+    <textarea id="outputTextEncrypt" rows="4" cols="50" readonly></textarea>
 
-    <label for="outputText">Resultado:</label>
-    <textarea id="outputText" rows="4" cols="50" readonly></textarea>
+    <!-- Área para descriptografar -->
+    <label for="inputTextDecrypt">Insira o texto para descriptografar:</label>
+    <textarea id="inputTextDecrypt" rows="4" cols="50"></textarea>
 
-    <button onclick="copyToClipboard()">Copiar para a Área de Transferência</button>
+    <button id="decryptButton">Descriptografar</button>
+
+    <label for="outputTextDecrypt">Resultado da descriptografia:</label>
+    <textarea id="outputTextDecrypt" rows="4" cols="50" readonly></textarea>
+
+    <button id="copyButton">Copiar para a Área de Transferência</button>
 
 </body>
 </html>
