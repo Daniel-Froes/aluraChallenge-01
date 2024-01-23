@@ -1,36 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../assets/js/index.js" defer></script>
+    <title>Decodificador de Texto</title>
     <link rel="stylesheet" href="../assets/css/index.css">
-    <title>Desafio de Criptografia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Outfit:wght@100;400;700&display=swap"
+        rel="stylesheet">
+    <script src="../assets/js/index.js" defer></script>
 </head>
+
 <body>
-    <h1>Boas-vindas ao primeiro desafio!</h1>
-    <p>Durante estas duas semanas, vamos trabalhar em uma aplicação que criptografa textos...</p>
-    
-    <!-- Área para criptografar -->
-    <label for="inputTextEncrypt">Insira o texto para criptografar:</label>
-    <textarea id="inputTextEncrypt" rows="4" cols="50"></textarea>
+    <header class="header-section">
+        <img src="../assets/src/img/Logo.svg" alt="Logo da Alura" class="header-img">
+    </header>
 
-    <button id="encryptButton">Criptografar</button>
+    <main class="content">
+        <textarea id="input" placeholder="Digite seu texto" class="textarea"></textarea>
 
-    <label for="outputTextEncrypt">Resultado da criptografia:</label>
-    <textarea id="outputTextEncrypt" rows="4" cols="50" readonly></textarea>
+        <aside class="options">
+            <p class="alert-text">
+                <img src="../assets/src/img/alertLogo.svg" alt="Alerta" class="alert-img">
+                Apenas letras minúsculas e sem acento
+            </p>
 
-    <!-- Área para descriptografar -->
-    <label for="inputTextDecrypt">Insira o texto para descriptografar:</label>
-    <textarea id="inputTextDecrypt" rows="4" cols="50"></textarea>
+            <button onclick="encrypt()" class="btn dark-blue">Criptografar</button>
+            <button onclick="decrypt()" class="btn btn-group">Descriptografar</button>
+        </aside>
+    </main>
 
-    <button id="decryptButton">Descriptografar</button>
+    <section class="container-messages">
+        <img src="../assets/src/img/logoLupa.svg" alt="Pessoa com uma lupa olhando" class="img disable">
+        <h1 class="advice-title disable">Nenhuma mensagem encontrada</h1>
+        <p class="advice-text disable">Digite um texto que você deseje criptografar ou descriptografar</p>
+        <div class="container-result-message">
+            <p class="result-text"></p>
+            <button class="btn btn-group enable btn-copy" onclick="copy()">Copiar</button>
+        </div>
+    </section>
 
-    <label for="outputTextDecrypt">Resultado da descriptografia:</label>
-    <textarea id="outputTextDecrypt" rows="4" cols="50" readonly></textarea>
-
-    <button id="copyButton">Copiar para a Área de Transferência</button>
-
+    <footer>
+        <p>Desenvolvido por <a href="https://github.com/Daniel-Froes" target="_blank">Daniel Froes</a></p>
+    </footer>
 </body>
+
 </html>

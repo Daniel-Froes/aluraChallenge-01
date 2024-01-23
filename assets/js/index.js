@@ -1,73 +1,81 @@
-// Módulo de criptografia
-const Criptografia = (function () {
-    const criptoMap = {
-        'e': 'enter',
-        'i': 'imes',
-        'a': 'ai',
-        'o': 'ober',
-        'u': 'ufat'
-    };
+function refactorElements() {
+    const disableElements = document.querySelectorAll('.disable');
 
-    function processText(text, operation) {
-        try {
-            const result = (operation === 'encrypt') ? encryptText(text) : decryptText(text);
-            return result;
-        } catch (error) {
-            console.error(error.message);
-            return 'Erro ao processar o texto.';
+    for (const element of disableElements) {
+        element.classList.add('disabled');
+    }
+
+    const enableElements = document.querySelectorAll('.enable');
+
+    for (const element of enableElements) {
+        element.classList.remove('enable');
+    }
+}
+
+function encrypt() {
+    const value = document.querySelector('#input').value;
+    const separatedChar = value.split('');
+
+    const encryptedText = [];
+
+    for (const char of separatedChar) {
+        switch (char) {
+            case 'a':
+                encryptedText.push('ai');
+                break;
+            case 'e':
+                encryptedText.push('enter');
+                break;
+            case 'i':
+                encryptedText.push('imes');
+                break;
+            case 'o':
+                encryptedText.push('ober');
+                break;
+            case 'u':
+                encryptedText.push('ufat');
+                break;
+            default:
+                encryptedText.push(char);
         }
     }
 
-    function encryptText(text) {
-        return text.replace(/[eioua]/g, char => criptoMap[char]);
+    refactorElements();
+
+    document.querySelector('.result-text').innerHTML = encryptedText.join('');
+
+    if (!value) {
+        document.querySelector('.result-text').innerHTML = 'Nenhuma mensagem';
     }
 
-    function decryptText(text) {
-        const regex = new RegExp(Object.values(criptoMap).join('|'), 'g');
-        return text.replace(regex, match => Object.keys(criptoMap).find(key => criptoMap[key] === match));
+    document.querySelector('#input').value = '';
+}
+
+function decrypt() {
+    const value = document.querySelector('#input').value;
+    const decryptedText = value
+        .replaceAll('ai', 'a')
+        .replaceAll('enter', 'e')
+        .replaceAll('imes', 'i')
+        .replaceAll('ober', 'o')
+        .replaceAll('ufat', 'u');
+
+    refactorElements();
+
+    document.querySelector('.result-text').innerHTML = decryptedText;
+
+    if (!value) {
+        document.querySelector('.result-text').innerHTML = 'Nenhuma mensagem';
     }
 
-    return {
-        processText
-    };
-})();
+    document.querySelector('#input').value = '';
+}
 
-// Interface do usuário
-const UI = (function () {
-    function init() {
-        const encryptButton = document.getElementById('encryptButton');
-        encryptButton.addEventListener('click', () => processText('encrypt'));
-
-        const decryptButton = document.getElementById('decryptButton');
-        decryptButton.addEventListener('click', () => processText('decrypt'));
-
-        const copyButton = document.getElementById('copyButton');
-        copyButton.addEventListener('click', copyToClipboard);
-    }
-
-    function processText(operation) {
-        const inputText = (operation === 'encrypt') ? document.getElementById('inputTextEncrypt').value : document.getElementById('inputTextDecrypt').value;
-        const result = Criptografia.processText(inputText, operation);
-
-        if (operation === 'encrypt') {
-            document.getElementById('outputTextEncrypt').value = result;
-        } else {
-            document.getElementById('outputTextDecrypt').value = result;
-        }
-    }
-
-    function copyToClipboard() {
-        const outputText = (document.getElementById('inputTextEncrypt').value) ? document.getElementById('outputTextEncrypt') : document.getElementById('outputTextDecrypt');
-        outputText.select();
-        document.execCommand('copy');
-        alert('Texto copiado para a área de transferência!');
-    }
-
-    return {
-        init
-    };
-})();
-
-document.addEventListener('DOMContentLoaded', function () {
-    UI.init();
-});
+function copy() {
+    const value = document.querySelector('.result-text').innerHTML;
+    navigator.clipboard.writeText(value);
+    document.querySelector('.copy').innerHTML = 'Copiado!';
+    setTimeout(() => {
+        document.querySelector('.copy').innerHTML = 'Copiar';
+    }, 1000);
+}
