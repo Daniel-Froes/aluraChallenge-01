@@ -7,7 +7,10 @@
     <title>Decodificador de Texto</title>
     <link rel="stylesheet" href="../assets/css/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Outfit:wght@100;400;700&display=swap"
         rel="stylesheet">
@@ -24,27 +27,32 @@
 
         <aside class="options">
             <p class="alert-text">
-                <img src="../assets/src/img/alertLogo.svg" alt="Alerta" class="alert-img">
+                <img src="../assets/src/img/alertLogo.svg" alt="Logo alerta" class="alert-img">
                 Apenas letras minúsculas e sem acento
             </p>
 
-            <button onclick="encrypt()" class="btn dark-blue">Criptografar</button>
+            <button onclick="encrypt()" class="btn btn-crypted">Criptografar</button>
             <button onclick="decrypt()" class="btn btn-group">Descriptografar</button>
         </aside>
     </main>
 
     <section class="container-messages">
-        <img src="../assets/src/img/logoLupa.svg" alt="Pessoa com uma lupa olhando" class="img disable">
+        <img src="../assets/src/img/logoLupa.svg" alt="Pessoa olhando atraves da lupa" class="img disable">
         <h1 class="advice-title disable">Nenhuma mensagem encontrada</h1>
         <p class="advice-text disable">Digite um texto que você deseje criptografar ou descriptografar</p>
         <div class="container-result-message">
             <p class="result-text"></p>
-            <button class="btn btn-group enable btn-copy" onclick="copy()">Copiar</button>
+            <button class="btn-decrypted btn-group enable btn-copy" onclick="copy()">Copiar</button>
         </div>
     </section>
 
     <footer>
-        <p>Desenvolvido por <a href="https://github.com/Daniel-Froes" target="_blank">Daniel Froes</a></p>
+        <ul class="social-icons">
+            <li><a href="https://github.com/daniel-froes" target="_blank"><i class="fab fa-github"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/danielfroes-/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="https://www.instagram.com/danielfroes.jpeg/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+        </ul>
+        <p>Daniel Froes &copy; 2024</p>
     </footer>
 </body>
 
